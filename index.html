@@ -3,17 +3,16 @@
 
 <head>
     <title>Cronus</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
     <div id="architecture-list">
-        <div class="architecture-list-item"></div>
     </div>
 
-    <form id="covert-upload-container">
-        <label for="architecture-file">Add an architecture for temporal analysis:</label>
-        <input type="file" id="architecture-file" name="architecture-file" accept=".xml">
-        <button type="submit">Add Architecture</button>
+    <form id="architecture-upload">
+        <label for="architecture-upload-file">Add an architecture for temporal analysis:</label>
+        <input id="architecture-upload-file" name="architecture-upload-file" type="file" accept=".xml">
     </form>
 
     <!-- Add references to jQuery and custom scripts -->
