@@ -1,3 +1,5 @@
+const architectureListItemTemplate = Handlebars.compile($("#ali-template").html());
+
 // Run this function on page load
 (function () {
     // Listen for the input event when a file is uploaded by the user
@@ -12,17 +14,13 @@
 })();
 
 function addArchitecture(architecture) {
-    renderNewArchitectureListItem(architecture);
+    const json = parser.parse(architecture);
+    renderNewArchitectureListItem(architecture, json);
 
     // Do other things for adding architectures
-    const json = parser.parse(architecture);
     console.log(json);
 }
 
-function renderNewArchitectureListItem(architecture) {
-    const architectureListItem = $("<textarea></textarea>");
-    architectureListItem.addClass("architecture-list-item");
-    architectureListItem.val(architecture);
-
-    $("#architecture-list").append(architectureListItem);
+function renderNewArchitectureListItem(xml, json) {
+    $("#architecture-list").append(architectureListItemTemplate({ plaintext: xml, object: JSON.stringify(json) }));
 }

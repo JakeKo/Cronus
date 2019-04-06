@@ -1,4 +1,25 @@
-.architecture-list-item {
+.hide {
+    display: none;
+}
+
+/* NOTE: ali -> architecture-list-item */
+.ali {
     height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ali-title {
+    height: 10%;
+}
+
+.ali-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.ali-plaintext, .ali-object {
     width: 50%;
+    height: 100%;
 }
