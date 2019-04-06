@@ -3,7 +3,7 @@
     // Listen for the input event when a file is uploaded by the user
     $("#architecture-upload-file").on("input", function (event) {
         const fileReader = new FileReader();
-        fileReader.addEventListener("loadend", function(event) {
+        fileReader.addEventListener("loadend", function (event) {
             addArchitecture(event.target.result);
         });
 
@@ -15,6 +15,8 @@ function addArchitecture(architecture) {
     renderNewArchitectureListItem(architecture);
 
     // Do other things for adding architectures
+    const json = parser.parse(architecture);
+    console.log(json);
 }
 
 function renderNewArchitectureListItem(architecture) {
