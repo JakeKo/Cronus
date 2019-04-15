@@ -10,6 +10,7 @@ const architectureListItemTemplate = Handlebars.compile($("#ali-template").html(
         });
 
         fileReader.readAsText(event.target.files[0]);
+        $("#architecture-upload-file").val(null);
     });
 })();
 
