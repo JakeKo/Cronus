@@ -7,17 +7,41 @@
 </head>
 
 <body>
-    <div id="architecture-list">
-    </div>
+    <!-- BEGIN CONTENT SECTION -->
+    <div id="architecture-list"></div>
 
     <form id="architecture-upload">
         <label for="architecture-upload-file">Add an architecture for temporal analysis:</label>
         <input id="architecture-upload-file" name="architecture-upload-file" type="file" accept=".xml">
     </form>
+    <!-- END CONTENT SECTION -->
 
-    <!-- Add references to jQuery and custom scripts -->
+    <!-- BEGIN TEMPLATE SECTION -->
+    <!-- Below is the Handlebars JS template for an Architecture List Item -->
+    <div id="ali-template" class="hide" type="text/x-handelbars-template">
+        <div class="ali">
+            <div class="ali-title">{{title}}</div>
+            <div class="ali-content">
+                <textarea class="ali-plaintext">{{plaintext}}</textarea>
+                <textarea class="ali-object">{{object}}</textarea>
+            </div>
+        </div>
+    </div>
+    <!-- END TEMPLATE SECTION -->
+
+    <!-- BEGIN SCRIPT SECTION -->
+    <!-- jQuery (for literally everything) -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- XML Parser (for parseing XML to JSON) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/3.12.16/parser.min.js"></script>
+    
+    <!-- Handlebars JS (for templates) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+    
+    <!-- Custom Scripts (for everything else) -->
     <script src="main.js"></script>
+    <!-- END SCRIPT SECTION -->
 </body>
 
 </html>
