@@ -8,6 +8,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 8px;
 }
 
 .ali-title {
