@@ -18,7 +18,7 @@
             <div class="ali-content">
                 <div class="ali-pane">
                     <form>
-                        <label for="ali-manifest-upload-{{index}}">Upload a manifest file:</label>
+                        <label id="ali-manifest-upload-label-{{index}}" for="ali-manifest-upload-{{index}}">Upload a manifest file:</label>
                         <input id="ali-manifest-upload-{{index}}" class="ali-manifest-upload" name="ali-manifest-upload-{{index}}" type="file" accept=".xml">
                     </form>
                     <textarea id="ali-manifest-raw-{{index}}" class="ali-manifest-raw"></textarea>
@@ -26,7 +26,7 @@
 
                 <div class="ali-pane">
                     <form>
-                        <label for="ali-vulnerabilities-upload-{{index}}">Upload a vulnerabilities file:</label>
+                        <label id="ali-vulnerabilities-upload-label-{{index}}" for="ali-vulnerabilities-upload-{{index}}">Upload a vulnerabilities file:</label>
                         <input id="ali-vulnerabilities-upload-{{index}}" class="ali-vulnerabilities-upload" name="ali-vulnerabilities-upload-{{index}}" type="file" accept=".xml">
                     </form>
                     <textarea id="ali-vulnerabilities-raw-{{index}}" class="ali-vulnerabilities-raw"></textarea>

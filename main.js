@@ -32,7 +32,8 @@ function handleManifestUpload(index) {
         });
 
         fileReader.readAsText(event.target.files[0]);
-        $(`#ali-manifest-upload-${index}`).val(null);
+        $(`#ali-manifest-upload-label-${index}`).hide();
+        $(`#ali-manifest-upload-${index}`).hide();
         
         // If the vulnerabilies have also been already uploaded, then create a new ALI and reset the flag
         if (vulnerabilitiesUploaded) {
@@ -56,7 +57,8 @@ function handleVulnerabilitiesUpload(index) {
         });
 
         fileReader.readAsText(event.target.files[0]);
-        $(`#ali-vulnerabilities-upload-${index}`).val(null);
+        $(`#ali-vulnerabilities-upload-label-${index}`).hide();
+        $(`#ali-vulnerabilities-upload-${index}`).hide();
         
         // If the manifest has also been already uploaded, then create a new ALI and reset the flag
         if (manifestUploaded) {
