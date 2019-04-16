@@ -1,5 +1,7 @@
 const aliTemplate = Handlebars.compile($("#ali-template").html());
 let index = -1;
+let manifestUploaded = false;
+let vulnerabilitiesUploaded = false;
 
 // Run this function on page load
 (function () {
@@ -31,6 +33,14 @@ function handleManifestUpload(index) {
 
         fileReader.readAsText(event.target.files[0]);
         $(`#ali-manifest-upload-${index}`).val(null);
+        
+        // If the vulnerabilies have also been already uploaded, then create a new ALI and reset the flag
+        if (vulnerabilitiesUploaded) {
+            createArchitectureListItem();
+            vulnerabilitiesUploaded = false;
+        } else {
+            manifestUploaded = true;
+        }
     }
 }
 
@@ -47,5 +57,13 @@ function handleVulnerabilitiesUpload(index) {
 
         fileReader.readAsText(event.target.files[0]);
         $(`#ali-vulnerabilities-upload-${index}`).val(null);
+        
+        // If the manifest has also been already uploaded, then create a new ALI and reset the flag
+        if (manifestUploaded) {
+            createArchitectureListItem();
+            manifestUploaded = false;
+        } else {
+            vulnerabilitiesUploaded = true;
+        }
     }
 }
