@@ -15,14 +15,20 @@ const architectureListItemTemplate = Handlebars.compile($("#ali-template").html(
 })();
 
 function addArchitecture(architecture) {
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.canvas.width  = window.innerWidth*.5;
+	ctx.canvas.height = window.innerHeight*.5;
     const json = parser.parse(architecture);
     renderNewArchitectureListItem(architecture, json);
-	createApplicationBox(json);
+	createApplicationBox(json,ctx);
+	x=-1;
 	json.application.components.Component.forEach(function(element) {
-		createComponentBox(element);
+		createComponentBox(element,x++,ctx);
 	});
+	y=-1;
 	json.application.newIntents.Intent.forEach(function(element){
-		createIntentBox(element);
+		createIntentBox(element,y++,ctx);
 	});
     console.log(json);
 }
@@ -31,13 +37,33 @@ function renderNewArchitectureListItem(xml, json) {
     $("#architecture-list").append(architectureListItemTemplate({ plaintext: xml, object: JSON.stringify(json) }));
 }
 
-function createApplicationBox(thing){
-	console.log("this is the beginning of the app box");
-	console.log(thing.application.packageName);
-	console.log("this is the end of the app box");
+function createApplicationBox(thing,ctx){
+
+	// Red rectangle
+	ctx.beginPath();
+	ctx.lineWidth = "6";
+	ctx.strokeStyle = "red";
+	ctx.rect(5, 5, ctx.canvas.width-10, ctx.canvas.height-10); 
+	ctx.stroke();
+	
+	ctx.fillStyle = "red";
+    ctx.font = "10pt sans-serif";
+    ctx.fillText(thing.application.packageName, 10, 30);
 }
 
-function createComponentBox(thing){
+function createComponentBox(thing,x,ctx){
+	// Green rectangle
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.strokeStyle = "green";
+if(x<ctx.canvas.width){
+	ctx.rect(50+x*30, 100, 20, 20);
+	ctx.stroke();
+}else{
+	y=ctx%x;
+	ctx.rect(50+y*30, 50, 20, 20);
+	ctx.stroke();
+}
 	console.log("this is a component");
 	console.log(thing.type);
 	console.log(thing.name);
@@ -45,7 +71,19 @@ function createComponentBox(thing){
 	console.log("this is the end of a component");
 }
 
-function createIntentBox(thing){
+function createIntentBox(thing,x,ctx){
+	ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.strokeStyle = "blue";
+if(x<ctx.canvas.width){
+	ctx.rect(70+x*50, .5*ctx.canvas.height, 40, 40);
+	ctx.stroke();
+}else{
+	y=ctx%x;
+	z=ctx/x;
+	ctx.rect(70+y*50, z*50+.5*ctx.canvas.height, 40, 40);
+	ctx.stroke();
+}
 	console.log("this is an intent");
 	console.log(thing.calledAt);
 	console.log(thing.sender);
