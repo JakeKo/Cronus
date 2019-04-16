@@ -53,17 +53,18 @@ function createApplicationBox(thing,ctx){
 
 function createComponentBox(thing,x,ctx){
 	// Green rectangle
-ctx.beginPath();
-ctx.lineWidth = "4";
-ctx.strokeStyle = "green";
-if(x<ctx.canvas.width){
-	ctx.rect(50+x*30, 100, 20, 20);
-	ctx.stroke();
-}else{
-	y=ctx%x;
-	ctx.rect(50+y*30, 50, 20, 20);
-	ctx.stroke();
-}
+	ctx.beginPath();
+	ctx.lineWidth = "4";
+	ctx.strokeStyle = "green";
+	if(x<ctx.canvas.width){
+		ctx.rect(50+x*110, 100, 100, 40);
+		ctx.stroke();
+	}else{
+		y=ctx%x;
+		z=ctx/x;
+		ctx.rect(50+y*110, 100+z*50, 100, 40);
+		ctx.stroke();
+	}
 	console.log("this is a component");
 	console.log(thing.type);
 	console.log(thing.name);
@@ -73,20 +74,20 @@ if(x<ctx.canvas.width){
 
 function createIntentBox(thing,x,ctx){
 	ctx.beginPath();
-ctx.lineWidth = "4";
-ctx.strokeStyle = "blue";
-if(x<ctx.canvas.width){
-	ctx.rect(70+x*50, .5*ctx.canvas.height, 40, 40);
-	ctx.stroke();
-}else{
-	y=ctx%x;
-	z=ctx/x;
-	ctx.rect(70+y*50, z*50+.5*ctx.canvas.height, 40, 40);
-	ctx.stroke();
-}
+	ctx.lineWidth = "4";
+	ctx.strokeStyle = "blue";
+	if(x<ctx.canvas.width){
+		ctx.rect(70+x*110, .5*ctx.canvas.height, 100, 40);
+		ctx.stroke();
+	}else{
+		y=ctx%x;
+		z=ctx/x;
+		ctx.rect(70+y*110, z*50+.5*ctx.canvas.height, 100, 40);
+		ctx.stroke();
+	}
 	console.log("this is an intent");
 	console.log(thing.calledAt);
 	console.log(thing.sender);
 	console.log(thing.consumerMethod);
-	console.log("this is the end of an intent")
+	console.log("this is the end of an intent");
 }
