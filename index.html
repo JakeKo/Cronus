@@ -9,21 +9,28 @@
 <body>
     <!-- BEGIN CONTENT SECTION -->
     <div id="architecture-list"></div>
-
-    <form id="architecture-upload">
-        <label for="architecture-upload-file">Add an architecture for temporal analysis:</label>
-        <input id="architecture-upload-file" name="architecture-upload-file" type="file" accept=".xml">
-    </form>
     <!-- END CONTENT SECTION -->
 
     <!-- BEGIN TEMPLATE SECTION -->
     <!-- Below is the Handlebars JS template for an Architecture List Item -->
     <div id="ali-template" class="hide" type="text/x-handelbars-template">
         <div class="ali">
-            <div class="ali-title">{{title}}</div>
             <div class="ali-content">
-                <textarea class="ali-plaintext">{{plaintext}}</textarea>
-                <textarea class="ali-object">{{object}}</textarea>
+                <div class="ali-pane">
+                    <form>
+                        <label for="ali-manifest-upload-{{index}}">Upload a manifest file:</label>
+                        <input id="ali-manifest-upload-{{index}}" class="ali-manifest-upload" name="ali-manifest-upload-{{index}}" type="file" accept=".xml">
+                    </form>
+                    <textarea id="ali-manifest-raw-{{index}}" class="ali-manifest-raw"></textarea>
+                </div>
+
+                <div class="ali-pane">
+                    <form>
+                        <label for="ali-vulnerabilities-upload-{{index}}">Upload a vulnerabilities file:</label>
+                        <input id="ali-vulnerabilities-upload-{{index}}" class="ali-vulnerabilities-upload" name="ali-vulnerabilities-upload-{{index}}" type="file" accept=".xml">
+                    </form>
+                    <textarea id="ali-vulnerabilities-raw-{{index}}" class="ali-vulnerabilities-raw"></textarea>
+                </div>
             </div>
         </div>
     </div>

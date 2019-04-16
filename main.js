@@ -1,27 +1,51 @@
-const architectureListItemTemplate = Handlebars.compile($("#ali-template").html());
+const aliTemplate = Handlebars.compile($("#ali-template").html());
+let index = -1;
 
 // Run this function on page load
 (function () {
-    // Listen for the input event when a file is uploaded by the user
-    $("#architecture-upload-file").on("input", function (event) {
+    createArchitectureListItem();
+})();
+
+// This function is responsible for instantiating a new architecture list item and yea
+function createArchitectureListItem() {
+    index++;
+
+    // Render a new architecture list item using the template
+    $("#architecture-list").append(aliTemplate({ index: index }));
+
+    // Since new input elements were created, we need to bind event handlers
+    $(`#ali-manifest-upload-${index}`).on("input", handleManifestUpload(index));
+    $(`#ali-vulnerabilities-upload-${index}`).on("input", handleVulnerabilitiesUpload(index));
+}
+
+// Since everything is index-based, we need to pass in an index parameter
+// So we return an event handler (which can only accept a single event parameter) with the index
+function handleManifestUpload(index) {
+    return function handler(event) {
         const fileReader = new FileReader();
+
         fileReader.addEventListener("loadend", function (event) {
-            addArchitecture(event.target.result);
+            $(`#ali-manifest-raw-${index}`).val(event.target.result);
+            console.log(parser.parse(event.target.result));
         });
 
         fileReader.readAsText(event.target.files[0]);
-        $("#architecture-upload-file").val(null);
-    });
-})();
-
-function addArchitecture(architecture) {
-    const json = parser.parse(architecture);
-    renderNewArchitectureListItem(architecture, json);
-
-    // Do other things for adding architectures
-    console.log(json);
+        $(`#ali-manifest-upload-${index}`).val(null);
+    }
 }
 
-function renderNewArchitectureListItem(xml, json) {
-    $("#architecture-list").append(architectureListItemTemplate({ plaintext: xml, object: JSON.stringify(json) }));
+// Since everything is index-based, we need to pass in an index parameter
+// So we return an event handler (which can only accept a single event parameter) with the index
+function handleVulnerabilitiesUpload(index) {
+    return function handler(event) {
+        const fileReader = new FileReader();
+
+        fileReader.addEventListener("loadend", function (event) {
+            $(`#ali-vulnerabilities-raw-${index}`).val(event.target.result);
+            console.log(parser.parse(event.target.result));
+        });
+
+        fileReader.readAsText(event.target.files[0]);
+        $(`#ali-vulnerabilities-upload-${index}`).val(null);
+    }
 }

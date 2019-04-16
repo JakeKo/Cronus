@@ -20,7 +20,14 @@
     flex-grow: 1;
 }
 
-.ali-plaintext, .ali-object {
+.ali-pane {
     width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ali-manifest-raw, .ali-vulnerabilities-raw {
+    width: 100%;
     height: 100%;
 }
