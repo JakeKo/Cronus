@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<analysisReport>
+    <name>demo</name>
+    <apps/>
+    <vulnerabilities>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = SendSmsService) to app com.sdalab.messenger that puts this data on an unsafe output (SMS_MMS) in one of its components (com.sdalab.messenger.SendSmsService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.SendSmsService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = SendSmsService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.SendSmsService: void onHandleIntent(android.content.Intent)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>SMS_MMS</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = PublishDataService) to app com.sdalab.messenger that puts this data on an unsafe output (NETWORK) in one of its components (com.sdalab.messenger.PublishDataService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.PublishDataService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = PublishDataService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.PublishDataService: int onStartCommand(android.content.Intent,int,int)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>NETWORK</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = SendSmsService) to app com.sdalab.messenger that puts this data on an unsafe output (SMS_MMS) in one of its components (com.sdalab.messenger.SendSmsService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.SendSmsService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = SendSmsService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.SendSmsService: void onHandleIntent(android.content.Intent)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>SMS_MMS</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = SendSmsService) to app com.sdalab.messenger that puts this data on an unsafe output (SMS_MMS) in one of its components (com.sdalab.messenger.SendSmsService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.SendSmsService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = SendSmsService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.SendSmsService: void onHandleIntent(android.content.Intent)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>SMS_MMS</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = PublishDataService) to app com.sdalab.messenger that puts this data on an unsafe output (NETWORK) in one of its components (com.sdalab.messenger.PublishDataService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.PublishDataService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = PublishDataService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.PublishDataService: int onStartCommand(android.content.Intent,int,int)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>NETWORK</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Intent Hijack</type>
+            <description>App com.sdalab.weather publicly sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent.</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Intent Hijack</type>
+            <description>App com.sdalab.weather publicly sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent.</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Intent Spoofing</type>
+            <description>App com.sdalab.messenger puts data (retrieved from an Explicit Intent (Component = SendSmsService)) on an unsafe sink (SMS_MMS) in one of its components (com.sdalab.messenger.SendSmsService). A malicious app can send a sensitive data from this channel.</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.SendSmsService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = SendSmsService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.SendSmsService: void onHandleIntent(android.content.Intent)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>SMS_MMS</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = PublishDataService) to app com.sdalab.messenger that puts this data on an unsafe output (NETWORK) in one of its components (com.sdalab.messenger.PublishDataService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.PublishDataService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = PublishDataService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.PublishDataService: int onStartCommand(android.content.Intent,int,int)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>NETWORK</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Intent Spoofing</type>
+            <description>App com.sdalab.messenger puts data (retrieved from an Explicit Intent (Component = PublishDataService)) on an unsafe sink (NETWORK) in one of its components (com.sdalab.messenger.PublishDataService). A malicious app can send a sensitive data from this channel.</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.PublishDataService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = PublishDataService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.PublishDataService: int onStartCommand(android.content.Intent,int,int)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>NETWORK</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Intent Hijack</type>
+            <description>App com.sdalab.weather publicly sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent.</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = PublishDataService) to app com.sdalab.messenger that puts this data on an unsafe output (NETWORK) in one of its components (com.sdalab.messenger.PublishDataService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.PublishDataService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = PublishDataService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.PublishDataService: int onStartCommand(android.content.Intent,int,int)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>NETWORK</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Intent Hijack</type>
+            <description>App com.sdalab.weather publicly sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent.</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+        <vulnerability>
+            <type>Inter-app Data Leakage</type>
+            <description>App com.sdalab.weather sends an Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=) containing sensitive data (LOCATION_INFORMATION) in one of its components (com.sdalab.weather.MainActivity). A malicious app can receive the Intent, and send its data via an Explicit Intent (Component = SendSmsService) to app com.sdalab.messenger that puts this data on an unsafe output (SMS_MMS) in one of its components (com.sdalab.messenger.SendSmsService).</description>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.weather</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.weather.MainActivity</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Implicit Intent (Action = showWeather, Category = android_intent_category_DEFAULT, Data=)</description>
+                        <alloyLabel>i1</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.weather.MainActivity$2: void onClick(android.view.View)</description>
+                        <element>
+                            <type>SOURCE_TYPE</type>
+                            <description>LOCATION_INFORMATION</description>
+                            <alloyLabel>dIntent</alloyLabel>
+                        </element>
+                        <alloyLabel>dIntent</alloyLabel>
+                    </element>
+                    <alloyLabel>c1</alloyLabel>
+                </element>
+                <alloyLabel>c1</alloyLabel>
+            </vulnerabilityElements>
+            <vulnerabilityElements>
+                <type>APP</type>
+                <description>com.sdalab.messenger</description>
+                <element>
+                    <type>COMPONENT</type>
+                    <description>com.sdalab.messenger.SendSmsService</description>
+                    <element>
+                        <type>INTENT</type>
+                        <description>Explicit Intent (Component = SendSmsService)</description>
+                        <alloyLabel>i2</alloyLabel>
+                    </element>
+                    <element>
+                        <type>METHOD</type>
+                        <description>com.sdalab.messenger.SendSmsService: void onHandleIntent(android.content.Intent)</description>
+                        <element>
+                            <type>SINK_TYPE</type>
+                            <description>SMS_MMS</description>
+                            <alloyLabel>dComponent</alloyLabel>
+                        </element>
+                        <alloyLabel>dComponent</alloyLabel>
+                    </element>
+                    <alloyLabel>c2</alloyLabel>
+                </element>
+                <alloyLabel>c2</alloyLabel>
+            </vulnerabilityElements>
+        </vulnerability>
+    </vulnerabilities>
+</analysisReport>
