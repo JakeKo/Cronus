@@ -12,8 +12,8 @@
     <!-- END CONTENT SECTION -->
 	
     <!-- BEGIN TEMPLATE SECTION -->
-    <!-- Below is the Handlebars JS template for an Architecture List Item -->
-    <div id="ali-template" class="hide" type="text/x-handelbars-template">
+    <!-- Template for an Architecture List Item -->
+    <div id="ali-template" type="text/x-handelbars-template">
         <div class="ali">
             <div class="ali-content">
                 <div class="ali-pane">
@@ -21,7 +21,9 @@
                         <label id="ali-manifest-upload-label-{{index}}" for="ali-manifest-upload-{{index}}">Upload a manifest file:</label>
                         <input id="ali-manifest-upload-{{index}}" class="ali-manifest-upload" name="ali-manifest-upload-{{index}}" type="file" accept=".xml">
                     </form>
-                    <textarea id="ali-manifest-raw-{{index}}" class="ali-manifest-raw"></textarea>
+
+                    <!-- Replace here -->
+                    <textarea id="ali-manifest-raw-{{index}}" class="ali-manifest-raw" spellcheck="false"></textarea>
                 </div>
 
                 <div class="ali-pane">
@@ -29,9 +31,17 @@
                         <label id="ali-vulnerabilities-upload-label-{{index}}" for="ali-vulnerabilities-upload-{{index}}">Upload a vulnerabilities file:</label>
                         <input id="ali-vulnerabilities-upload-{{index}}" class="ali-vulnerabilities-upload" name="ali-vulnerabilities-upload-{{index}}" type="file" accept=".xml">
                     </form>
-                    <textarea id="ali-vulnerabilities-raw-{{index}}" class="ali-vulnerabilities-raw"></textarea>
+
+                    <div id="ali-vulnerabilities-diff-{{index}}" class="ali-vulnerabilities-diff"></div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Template for a diff item -->
+    <div id="diff-item-template" type="text/x-handelbars-template">
+        <div class="diff-item diff-item-{{operation}}">
+            {{operationName}} {{name}}
         </div>
     </div>
     <!-- END TEMPLATE SECTION -->
@@ -45,6 +55,9 @@
     
     <!-- Handlebars JS (for templates) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+
+    <!-- Deep Object Diff (for determining the diff between files) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/deep-diff/0.3.3/deep-diff.min.js"></script>
     
     <!-- Custom Scripts (for everything else) -->
     <script src="main.js"></script>

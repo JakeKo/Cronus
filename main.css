@@ -1,5 +1,17 @@
-.hide {
-    display: none;
+html {
+    font-family: 'Segoe UI'
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#architecture-list {
+    width: 100%;
+    max-width: 1000px;
 }
 
 /* NOTE: ali -> architecture-list-item */
@@ -27,7 +39,30 @@
     flex-direction: column;
 }
 
-.ali-manifest-raw, .ali-vulnerabilities-raw {
-    width: 100%;
+.ali-manifest-raw {
     height: 100%;
+}
+
+.ali-vulnerabilities-diff {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.diff-item {
+    padding: 8px;
+    font-size: 14px;
+    margin: 6px 0;
+    color: #FFFFFF;
+}
+
+.diff-item-added {
+    background: #FE5F55;
+}
+
+.diff-item-removed {
+    background: #575D90;
+}
+
+#ali-template, #diff-item-template {
+    display: none;
 }
