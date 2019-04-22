@@ -1,4 +1,6 @@
 const aliTemplate = Handlebars.compile($("#ali-template").html());
+const diffItemTemplate = Handlebars.compile($("#diff-item-template").html());
+
 const architectureList = [];
 let manifestUploaded = false;
 let vulnerabilitiesUploaded = false;
@@ -34,12 +36,13 @@ function handleManifestUpload(index) {
 
             // Update the architecture list with the newly uploaded content
             architectureList[index].manifest = parser.parse(manifest);
+            addArchitecture(manifest, index);
         });
 
         fileReader.readAsText(event.target.files[0]);
         $(`#ali-manifest-upload-label-${index}`).hide();
         $(`#ali-manifest-upload-${index}`).hide();
-        
+
         // If the vulnerabilies have also been already uploaded, then create a new ALI and reset the flag
         if (vulnerabilitiesUploaded) {
             createArchitectureListItem();
@@ -50,6 +53,35 @@ function handleManifestUpload(index) {
     }
 }
 
+function addArchitecture(architecture, index) {
+    var id = `ali-manifest-raw-${index}`;
+    const json = parser.parse(architecture);
+    createApplication(json, id);
+    document.getElementById(id).value += "\n";
+    x = 1;
+    json.application.components.Component.forEach(function (element) {
+        createComponent(element, x++, id);
+    });
+    document.getElementById(id).value += "\n";
+    y = 1;
+    json.application.newIntents.Intent.forEach(function (element) {
+        createIntent(element, y++, id);
+    });
+    console.log(json);
+}
+
+
+function createApplication(app, id) {
+    document.getElementById(id).value = "Application name: " + app.application.packageName + "\n";
+}
+
+function createComponent(comp, x, id) {
+    document.getElementById(id).value += "Component " + `${x}` + ":\nType: " + comp.type + "\nName: " + comp.name + "\nFilter: " + comp.IntentFilter.filter + "\n\n";
+}
+
+function createIntent(intent, x, id) {
+    document.getElementById(id).value += "Intent " + `${x}` + ":\nCalled at " + intent.calledAt + "\nSent by: " + intent.sender + "\nConsumed by: " + intent.consumerMethod + "\n\n";
+}
 // Since everything is index-based, we need to pass in an index parameter
 // So we return an event handler (which can only accept a single event parameter) with the index
 function handleVulnerabilitiesUpload(index) {
@@ -62,13 +94,15 @@ function handleVulnerabilitiesUpload(index) {
 
             architectureList[index].vulnerabilities = parser.parse(vulnerabilities);
             // console.log(architectureList[index].vulnerabilities);
-            displayDiff(calculateDiff(index - 1, index));
+            const rawDiff = calculateRawDiff(index - 1, index);
+            const diff = calculateVulnerabilityDiff(rawDiff);
+            displayDiff(diff, index);
         });
 
         fileReader.readAsText(event.target.files[0]);
         $(`#ali-vulnerabilities-upload-label-${index}`).hide();
         $(`#ali-vulnerabilities-upload-${index}`).hide();
-        
+
         // If the manifest has also been already uploaded, then create a new ALI and reset the flag
         if (manifestUploaded) {
             createArchitectureListItem();
@@ -79,29 +113,39 @@ function handleVulnerabilitiesUpload(index) {
     }
 }
 
-function calculateDiff(firstIndex, secondIndex) {
+function calculateRawDiff(firstIndex, secondIndex) {
     const first = architectureList[firstIndex];
     const second = architectureList[secondIndex];
+
     return DeepDiff.diff(
         first === undefined ? {} : first.vulnerabilities.analysisReport.vulnerabilities.vulnerability,
         second.vulnerabilities.analysisReport.vulnerabilities.vulnerability
     );
 }
 
-function displayDiff(diff) {
-    console.log(diff);
-    const vulnerabilitiesAdded = [];
-    const vulnerabilitiesRemoved = [];
-    
+function calculateVulnerabilityDiff(diff = []) {
+    const vulnerabilities = { added: [], removed: [] };
+
     diff.forEach(diffInstance => {
         if (diffInstance.kind === "E") {
-            vulnerabilitiesAdded.push(...diffInstance.rhs.map(item => item.type));
+            vulnerabilities.added.push(...diffInstance.rhs.map(item => item.type));
         } else if (diffInstance.item.kind === "D") {
-            vulnerabilitiesRemoved.push(diffInstance.item.lhs.type);
+            vulnerabilities.removed.push(diffInstance.item.lhs.type);
         } else if (diffInstance.item.kind === "N") {
-            vulnerabilitiesAdded.push(diffInstance.item.rhs.type);
+            vulnerabilities.added.push(diffInstance.item.rhs.type);
         }
     });
+    
+    return vulnerabilities;
+}
 
-    console.log({ vulnerabilitiesAdded, vulnerabilitiesRemoved });
+function displayDiff(diff, index) {
+    const diffElement = $(`#ali-vulnerabilities-diff-${index}`);
+
+    if (diff.added.length === 0 && diff.removed.length === 0) {
+        diffElement.html("<i>No vulnerabilities added or removed</i>")
+    }
+
+    diff.added.forEach(diffItem => diffElement.append(diffItemTemplate({ operation: "added", operationName: "Added", name: diffItem })));
+    diff.removed.forEach(diffItem => diffElement.append(diffItemTemplate({ operation: "removed", operationName: "Removed", name: diffItem })));
 }

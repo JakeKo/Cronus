@@ -10,9 +10,9 @@
     <!-- BEGIN CONTENT SECTION -->
     <div id="architecture-list"></div>
     <!-- END CONTENT SECTION -->
-
+	
     <!-- BEGIN TEMPLATE SECTION -->
-    <!-- Below is the Handlebars JS template for an Architecture List Item -->
+    <!-- Template for an Architecture List Item -->
     <div id="ali-template" type="text/x-handelbars-template">
         <div class="ali">
             <div class="ali-content">
@@ -32,10 +32,16 @@
                         <input id="ali-vulnerabilities-upload-{{index}}" class="ali-vulnerabilities-upload" name="ali-vulnerabilities-upload-{{index}}" type="file" accept=".xml">
                     </form>
 
-                    <!-- Replace here -->
-                    <textarea id="ali-vulnerabilities-raw-{{index}}" class="ali-vulnerabilities-raw" spellcheck="false"></textarea>
+                    <div id="ali-vulnerabilities-diff-{{index}}" class="ali-vulnerabilities-diff"></div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Template for a diff item -->
+    <div id="diff-item-template" type="text/x-handelbars-template">
+        <div class="diff-item diff-item-{{operation}}">
+            {{operationName}} {{name}}
         </div>
     </div>
     <!-- END TEMPLATE SECTION -->
