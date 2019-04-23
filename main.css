@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,900');
+
 html {
     font-family: 'Segoe UI'
 }
@@ -9,9 +11,27 @@ body {
     align-items: center;
 }
 
+#title {
+    font-size: 64px;
+    margin-top: 128px;
+    font-family: "Raleway";
+    font-weight: 900;
+}
+
+#subtitle {
+    font-size: 32px;
+    margin-bottom: 128px;
+    font-family: "Raleway";
+    font-weight: 400;
+    text-align: center;
+}
+
 #architecture-list {
     width: 100%;
     max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* NOTE: ali -> architecture-list-item */
@@ -20,7 +40,8 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 8px;
+    align-items: center;
+    padding-bottom: 16px;
 }
 
 .ali-title {
@@ -30,6 +51,7 @@ body {
 .ali-content {
     display: flex;
     flex-grow: 1;
+    width: 100%;
 }
 
 .ali-pane {
@@ -37,15 +59,50 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.ali-pane form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-button {
+    border: 2px solid black;
+    outline: none;
+    padding: 6px 36px;
+    font-family: "Raleway";
+    font-weight: 600;
+    background: transparent;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.ali-manifest-upload {
+    display: none;
+}
+
+.ali-vulnerabilities-upload {
+    display: none;
 }
 
 .ali-manifest-raw {
     height: 100%;
+    display: none;
+    width: 100%;
 }
 
 .ali-vulnerabilities-diff {
     height: 100%;
     overflow-y: scroll;
+    display: none;
+    width: 100%;
+    background: white;
 }
 
 .diff-item {

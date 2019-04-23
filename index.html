@@ -8,6 +8,8 @@
 
 <body>
     <!-- BEGIN CONTENT SECTION -->
+    <div id="title">CRONUS</div>
+    <div id="subtitle">a summary and temporal analysis tool</div>
     <div id="architecture-list"></div>
     <!-- END CONTENT SECTION -->
 	
@@ -17,9 +19,10 @@
         <div class="ali">
             <div class="ali-content">
                 <div class="ali-pane">
-                    <form>
-                        <label id="ali-manifest-upload-label-{{index}}" for="ali-manifest-upload-{{index}}">Upload a manifest file:</label>
-                        <input id="ali-manifest-upload-{{index}}" class="ali-manifest-upload" name="ali-manifest-upload-{{index}}" type="file" accept=".xml">
+                    <form id="ali-manifest-upload-form-{{index}}">
+                        <label id="ali-manifest-upload-label-{{index}}" for="ali-manifest-upload-{{index}}">Upload manifest:</label>
+                        <input id="ali-manifest-upload-{{index}}" class="ali-manifest-upload" name="ali-manifest-upload={{index}}" type="file" accept=".xml">
+                        <input class="upload-button" type="button" value="UPLOAD" onclick="document.getElementById('ali-manifest-upload-{{index}}').click();" />
                     </form>
 
                     <!-- Replace here -->
@@ -27,9 +30,10 @@
                 </div>
 
                 <div class="ali-pane">
-                    <form>
-                        <label id="ali-vulnerabilities-upload-label-{{index}}" for="ali-vulnerabilities-upload-{{index}}">Upload a vulnerabilities file:</label>
+                    <form id="ali-vulnerabilities-upload-form-{{index}}">
+                        <label id="ali-vulnerabilities-upload-label-{{index}}" for="ali-vulnerabilities-upload-{{index}}">Upload vulnerabilities:</label>
                         <input id="ali-vulnerabilities-upload-{{index}}" class="ali-vulnerabilities-upload" name="ali-vulnerabilities-upload-{{index}}" type="file" accept=".xml">
+                        <input class="upload-button" type="button" value="UPLOAD" onclick="document.getElementById('ali-vulnerabilities-upload-{{index}}').click();" />
                     </form>
 
                     <div id="ali-vulnerabilities-diff-{{index}}" class="ali-vulnerabilities-diff"></div>
